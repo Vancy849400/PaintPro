@@ -10,7 +10,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" class="scrolled">
         <div class="nav-container">
             <div class="logo">🎨 Vancy Painter</div>
             <!-- Hamburger menu button -->
@@ -20,27 +20,31 @@
                 <span class="bar"></span>
             </button>
             <ul>
-                <li><a href="#home" onclick="smoothScroll(event, 'home')">Home</a></li>
-                <li><a href="#about" onclick="smoothScroll(event, 'about')">About</a></li>
-                <li><a href="#projects" onclick="smoothScroll(event, 'projects')">Projects</a></li>
-                <li><a href="#contact" onclick="smoothScroll(event, 'contact')">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-subtitle">Professional House Painting</div>
-            <h1>Transform Your Space<br/>With <span>Expert Precision</span></h1>
-            <p class="hero-description">Bringing life, color, and beauty to homes across the country with meticulous craftsmanship and years of trusted experience.</p>
+            <h1>Transform Your Space<br><span>With Expert Precision</span></h1>
+            <p class="hero-description">
+                Bringing life, color, and beauty to homes across Zambia.
+            </p>
             <div class="cta-buttons">
-                <button class="cta-button cta-primary" onclick="smoothScroll(event, 'projects')">View Portfolio</button>
-                <button class="cta-button cta-secondary" onclick="smoothScroll(event, 'contact')">Get in Touch</button>
+                <button class="cta-button cta-primary" onclick="location.href='projects.html'">
+                View Portfolio
+            </button>
+                <button class="cta-button cta-secondary" onclick="smoothScroll(event,'contact')">
+                Get in Touch
+            </button>
             </div>
         </div>
-        <!-- Carousel navigation dots -->
-        <div class="hero-carousel-nav"></div>
     </section>
 
     <!-- About Section -->
@@ -83,15 +87,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="section-header">
-            <h2>Featured <span>Projects</span></h2>
-            <p>A showcase of precision, creativity, and transformation</p>
-        </div>
-        <div class="project-grid" id="projectGrid"></div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Let's Create Something <span>Beautiful</span></h2>
@@ -119,20 +114,7 @@
             <p style="margin-top: 0.5rem;">Lusaka, Zambia</p>
         </div>
     </footer>
-
-    <!-- Modal -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="modal-image" id="modalImage"></div>
-            <div class="modal-details" id="modalDetails"></div>
-        </div>
-    </div>
     <script src="index.js"></script>
-    <script>
-        const now = new Date().getFullYear()
-        document.getElementById("now").textContent = `© ${now} Professional House Painting. All rights reserved.`
-    </script>
 </body>
 
 </html>

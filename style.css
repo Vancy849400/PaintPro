@@ -114,7 +114,7 @@ nav a:hover::after {
 /* Hero Section */
 
 .hero {
-    padding-top: 4rem;
+    padding-top: 8rem;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -231,36 +231,11 @@ nav a:hover::after {
     transform: translateY(-5px);
 }
 
-.hero-carousel-nav {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 10;
-}
-
-.hero-carousel-dot {
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid #10b981;
-    cursor: pointer;
-    transition: background 0.3s, border-color 0.3s;
-}
-
-.hero-carousel-dot.active {
-    background: #10b981;
-    border-color: #34d399;
-}
-
 
 /* About Section */
 
 .about {
-    padding: 8rem 2rem;
+    padding: 4rem 2rem;
     background: linear-gradient(180deg, #0a0e27 0%, #111827 100%);
     position: relative;
 }
@@ -381,7 +356,7 @@ nav a:hover::after {
 }
 
 .section-header {
-    text-align: center;
+    text-align: left;
     margin-bottom: 5rem;
 }
 
