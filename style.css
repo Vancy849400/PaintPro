@@ -235,7 +235,7 @@ nav a:hover::after {
 /* About Section */
 
 .about {
-    padding: 4rem 2rem;
+    padding: 8rem 2rem;
     background: linear-gradient(180deg, #0a0e27 0%, #111827 100%);
     position: relative;
 }
@@ -571,7 +571,7 @@ nav a:hover::after {
 /* Contact Section */
 
 .contact {
-    padding: 8rem 2rem;
+    padding: 0 2rem 6rem;
     background: linear-gradient(135deg, #111827, #0a0e27);
     text-align: center;
 }
