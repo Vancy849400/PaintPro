@@ -84,6 +84,32 @@ nav a:hover::after {
     width: 100%;
 }
 
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 8px;
+    z-index: 2001;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    margin: 4px 0;
+    transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.25s;
+}
+
 
 /* Hero Section */
 
@@ -95,7 +121,7 @@ nav a:hover::after {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    transition: background-image 0.7s cubic-bezier(.4, 0, .2, 1);
+    transition: background-image 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -106,7 +132,7 @@ nav a:hover::after {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+    background: radial-gradient( circle at 30% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
     animation: moveGradient 20s ease infinite;
 }
 
@@ -205,6 +231,31 @@ nav a:hover::after {
     transform: translateY(-5px);
 }
 
+.hero-carousel-nav {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.hero-carousel-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #10b981;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.hero-carousel-dot.active {
+    background: #10b981;
+    border-color: #34d399;
+}
+
 
 /* About Section */
 
@@ -212,16 +263,6 @@ nav a:hover::after {
     padding: 8rem 2rem;
     background: linear-gradient(180deg, #0a0e27 0%, #111827 100%);
     position: relative;
-}
-
-.about::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: linear-gradient(180deg, rgba(10, 14, 39, 1), transparent);
 }
 
 .about-container {
@@ -246,17 +287,16 @@ nav a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10rem;
     box-shadow: 0 30px 60px rgba(16, 185, 129, 0.3);
     position: relative;
     overflow: hidden;
 }
 
-.profile-image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
 }
 
 .floating-badge {
@@ -281,16 +321,23 @@ nav a:hover::after {
     color: #d1d5db;
 }
 
+.about-name {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #10b981, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .about-content h2 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     font-weight: 800;
 }
 
-.about-name {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 800;
+.about-content h2 span {
     background: linear-gradient(135deg, #10b981, #34d399);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -341,7 +388,6 @@ nav a:hover::after {
 .projects {
     padding: 8rem 2rem;
     background: #0a0e27;
-    position: relative;
 }
 
 .section-header {
@@ -382,23 +428,6 @@ nav a:hover::after {
     transition: all 0.4s;
     cursor: pointer;
     border: 1px solid rgba(16, 185, 129, 0.2);
-    position: relative;
-}
-
-.project-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 25px;
-    padding: 2px;
-    background: linear-gradient(135deg, #10b981, transparent);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.project-card:hover::before {
-    opacity: 1;
 }
 
 .project-card:hover {
@@ -413,12 +442,10 @@ nav a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 6rem;
     position: relative;
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
 }
 
 .project-image::after {
@@ -434,7 +461,6 @@ nav a:hover::after {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    width: 100%;
 }
 
 .project-card:hover .project-image::after {
@@ -448,19 +474,12 @@ nav a:hover::after {
 .project-info h3 {
     font-size: 1.6rem;
     margin-bottom: 0.8rem;
-    color: white;
 }
 
 .project-info p {
     color: #9ca3af;
     font-size: 1.05rem;
     margin-bottom: 1.5rem;
-}
-
-.project-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .status-badge {
@@ -478,11 +497,6 @@ nav a:hover::after {
     color: #10b981;
 }
 
-.ongoing {
-    background: rgba(59, 130, 246, 0.2);
-    color: #3b82f6;
-}
-
 
 /* Modal */
 
@@ -495,7 +509,6 @@ nav a:hover::after {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
-    animation: fadeIn 0.3s;
     overflow-y: auto;
 }
 
@@ -506,28 +519,7 @@ nav a:hover::after {
     background: linear-gradient(135deg, #111827, #1f2937);
     border-radius: 30px;
     overflow: hidden;
-    animation: slideUp 0.5s;
     border: 2px solid rgba(16, 185, 129, 0.3);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .close {
@@ -562,7 +554,6 @@ nav a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10rem;
     background-size: cover;
     background-position: center;
 }
@@ -574,11 +565,6 @@ nav a:hover::after {
 .modal-details h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: white;
-}
-
-.modal-details .status-badge {
-    margin-bottom: 2rem;
 }
 
 .modal-details p {
@@ -695,11 +681,6 @@ footer {
     padding: 3rem 2rem;
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .footer-links {
     display: flex;
     justify-content: center;
@@ -745,43 +726,12 @@ footer p {
 }
 
 
-/* Hamburger menu styles */
-
-.menu-toggle {
-    display: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border-radius: 8px;
-    transition: background 0.2s;
-    z-index: 2001;
-    position: relative;
-}
-
-.menu-toggle .bar {
-    display: block;
-    width: 26px;
-    height: 3px;
-    background: #e5e7eb;
-    border-radius: 2px;
-    margin: 4px 0;
-    transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.25s;
-    position: relative;
-}
-
-
-/* Hamburger visible on small screens */
+/* Responsive */
 
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block;
+        display: flex;
     }
-    /* Hamburger to X animation */
     nav.open .menu-toggle .bar:nth-child(1) {
         transform: translateY(7px) rotate(45deg);
     }
@@ -796,7 +746,7 @@ footer p {
         left: 0;
         right: 0;
         top: 70px;
-        background: linear-gradient(180deg, rgba(10, 14, 39, 0.98), rgba(16, 185, 129, 0.02));
+        background: rgba(10, 14, 39, 0.98);
         flex-direction: column;
         gap: 0;
         padding: 1.2rem 1.5rem;
@@ -805,47 +755,20 @@ footer p {
         overflow: hidden;
         transition: max-height 0.35s ease, opacity 0.35s ease;
         opacity: 0;
-        z-index: 1500;
-    }
-    nav a {
-        padding: 0.9rem 0;
-        font-size: 1.05rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
     nav.open ul {
         max-height: calc(100vh - 70px);
         opacity: 1;
     }
+    nav a {
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
     body.no-scroll {
         overflow: hidden;
     }
-}
-
-@media (max-width: 1024px) {
-    .about-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    .profile-image {
-        max-width: 100%;
-    }
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    .details-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
     .nav-container {
         padding: 1rem 1.5rem;
-    }
-    nav ul {
-        gap: 1.5rem;
-    }
-    nav a {
-        font-size: 0.9rem;
     }
     .hero h1 {
         font-size: 3rem;
@@ -853,64 +776,26 @@ footer p {
     .hero-description {
         font-size: 1.1rem;
     }
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
-    .cta-button {
-        width: 100%;
-        max-width: 300px;
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    .floating-badge {
+        position: static;
+        margin-top: 2rem;
     }
     .about-content h2,
     .section-header h2,
     .contact h2 {
         font-size: 2.5rem;
     }
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-    .contact-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    .contact-btn {
-        width: 100%;
-        max-width: 300px;
-    }
-    .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .floating-badge {
-        position: static;
-        margin-top: 2rem;
-    }
-}
-
-
-/* Hero Carousel Styles */
-
-.hero-carousel-nav {
-    position: absolute;
-    bottom: 0.8rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 10;
-}
-
-.hero-carousel-dot {
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid #10b981;
-    cursor: pointer;
-    transition: background 0.3s, border-color 0.3s;
-}
-
-.hero-carousel-dot.active {
-    background: #10b981;
-    border-color: #34d399;
 }

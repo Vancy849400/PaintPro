@@ -1,10 +1,10 @@
-// Populate projects
+//Projects properties
 const projects = [{
         title: "Luxury Living Room",
         description: "Modern elegance with sophisticated color palette",
         status: "completed",
-        image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1600&q=80",
-        fullDescription: "A complete transformation that turned this ordinary living space into a stunning showcase of modern design. The client wanted sophistication and warmth, achieved through careful color selection and expert application.",
+        image: "/Home Painting/Images/20251225_1415_image.png",
+        fullDescription: "This stunning living room transformation showcases the power of a carefully chosen color scheme. Deep charcoal gray walls create an intimate, sophisticated atmosphere while crisp white crown molding and trim provide striking contrast. The space features a textured accent wall that adds depth and visual interest, complemented by subtle gold metallic accents throughout. The result is a contemporary yet warm living space that feels both luxurious and inviting, perfect for both entertaining and relaxation.",
         details: [
             { label: "Duration", value: "5 days" },
             { label: "Area Covered", value: "450 sq ft" },
@@ -22,8 +22,8 @@ const projects = [{
         title: "Estate Exterior",
         description: "Premium weather-resistant full exterior transformation",
         status: "completed",
-        image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
-        fullDescription: "This comprehensive exterior project protected and elevated the home's curb appeal. Using premium paints designed for Zambia's climate, we ensured both beauty and durability.",
+        image: "/Home Painting/Images/Exterial image.jpg",
+        fullDescription: "This comprehensive exterior renovation brought new life to a beautiful estate home. The project began with thorough surface preparation including pressure washing and crack repair to ensure longevity. We applied a premium two-coat paint system specifically formulated to withstand Zambia's intense sun and seasonal rains. The elegant forest green body is beautifully offset by cream-colored trim and sophisticated burgundy accent details on shutters and architectural features. The result is enhanced curb appeal with protection that will last for years to come.",
         details: [
             { label: "Duration", value: "2 weeks" },
             { label: "Area Covered", value: "2,400 sq ft" },
@@ -41,8 +41,8 @@ const projects = [{
         title: "Corporate Headquarters",
         description: "Professional workspace with brand-aligned colors",
         status: "completed",
-        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-        fullDescription: "Weekend transformation of a busy office to minimize business disruption. Created a professional environment that reflects the company's brand while maintaining productivity.",
+        image: "/Home Painting/Images/Coorporate_image.jpg",
+        fullDescription: "This corporate office transformation was completed over a weekend to avoid disrupting business operations. The project focused on creating a professional environment that reflects the company's brand identity while promoting productivity. We used low-VOC paints to ensure air quality and employee comfort, with a sophisticated corporate blue as the primary color paired with neutral grays and crisp whites. The main conference room features a bold accent wall that serves as a dynamic backdrop for presentations. Modern, clean lines and careful attention to detail throughout create a workspace that employees and clients alike can appreciate.",
         details: [
             { label: "Duration", value: "3 days" },
             { label: "Area Covered", value: "1,200 sq ft" },
@@ -178,8 +178,8 @@ document.querySelectorAll(".project-card").forEach((card) => {
 // Hero Carousel Logic
 const heroImages = [
     "./Images/impressed-young-african-american-builder-uniform-holding-roller-brush-isolated-blue-background.jpg",
-    "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1600&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600&q=80",
+    "./Images/Vancy.jpg",
+    "./Images/My Image.jpg",
 ];
 const heroSection = document.querySelector(".hero");
 const carouselNav = document.querySelector(".hero-carousel-nav");
