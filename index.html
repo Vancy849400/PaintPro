@@ -33,7 +33,7 @@
         <div class="hero-content">
             <div class="hero-subtitle">Professional House Painting</div>
             <h1>Transform Your Space<br/>With <span>Expert Precision</span></h1>
-            <p class="hero-description">Bringing life, color, and beauty to homes across Lusaka with meticulous craftsmanship and years of trusted experience.</p>
+            <p class="hero-description">Bringing life, color, and beauty to homes across the country with meticulous craftsmanship and years of trusted experience.</p>
             <div class="cta-buttons">
                 <button class="cta-button cta-primary" onclick="smoothScroll(event, 'projects')">View Portfolio</button>
                 <button class="cta-button cta-secondary" onclick="smoothScroll(event, 'contact')">Get in Touch</button>
@@ -115,7 +115,7 @@
                 <a href="#projects" onclick="smoothScroll(event, 'projects')">Projects</a>
                 <a href="#contact" onclick="smoothScroll(event, 'contact')">Contact</a>
             </div>
-            <p>© 2024 Professional House Painting. All rights reserved.</p>
+            <p id="now"></p>
             <p style="margin-top: 0.5rem;">Lusaka, Zambia</p>
         </div>
     </footer>
@@ -130,28 +130,8 @@
     </div>
     <script src="index.js"></script>
     <script>
-        // Hamburger menu toggle logic
-        const nav = document.getElementById('navbar');
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = nav.querySelectorAll('ul a');
-
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            const expanded = nav.classList.contains('open');
-            menuToggle.setAttribute('aria-expanded', expanded);
-            document.body.classList.toggle('no-scroll', expanded);
-        });
-
-        // Close menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (nav.classList.contains('open')) {
-                    nav.classList.remove('open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.classList.remove('no-scroll');
-                }
-            });
-        });
+        const now = new Date().getFullYear()
+        document.getElementById("now").textContent = `© ${now} Professional House Painting. All rights reserved.`
     </script>
 </body>
 

@@ -179,7 +179,6 @@ document.querySelectorAll(".project-card").forEach((card) => {
 const heroImages = [
     "./Images/impressed-young-african-american-builder-uniform-holding-roller-brush-isolated-blue-background.jpg",
     "./Images/Vancy.jpg",
-    ".//Images/Image2.jpg",
 ];
 const heroSection = document.querySelector(".hero");
 const carouselNav = document.querySelector(".hero-carousel-nav");
@@ -229,3 +228,28 @@ if (heroSection && carouselNav) {
     heroSection.addEventListener("mouseenter", () => clearInterval(heroInterval));
     heroSection.addEventListener("mouseleave", resetHeroInterval);
 }
+
+// Hamburger menu toggle logic
+const nav = document.getElementById("navbar");
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = nav.querySelectorAll("ul a");
+
+menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    const expanded = nav.classList.contains("open");
+    menuToggle.setAttribute("aria-expanded", expanded);
+    document.body.classList.toggle("no-scroll", expanded);
+});
+
+// Close menu when a link is clicked
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        if (nav.classList.contains("open")) {
+            nav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            document.body.classList.remove("no-scroll");
+        }
+    });
+});
+
+//Dynamic date
