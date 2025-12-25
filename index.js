@@ -179,7 +179,7 @@ document.querySelectorAll(".project-card").forEach((card) => {
 const heroImages = [
     "./Images/impressed-young-african-american-builder-uniform-holding-roller-brush-isolated-blue-background.jpg",
     "./Images/Vancy.jpg",
-    ".//Images/Image1.jpg",
+    ".//Images/Image2.jpg",
 ];
 const heroSection = document.querySelector(".hero");
 const carouselNav = document.querySelector(".hero-carousel-nav");
