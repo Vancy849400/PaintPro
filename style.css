@@ -321,16 +321,6 @@ nav a:hover::after {
     color: #d1d5db;
 }
 
-.about-name {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #10b981, #34d399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
 .about-content h2 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
@@ -755,6 +745,7 @@ footer p {
         overflow: hidden;
         transition: max-height 0.35s ease, opacity 0.35s ease;
         opacity: 0;
+        line-height: 3.3;
     }
     nav.open ul {
         max-height: calc(100vh - 70px);
@@ -763,6 +754,7 @@ footer p {
     nav a {
         padding: 0.9rem 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        font-size: 1.4rem;
     }
     body.no-scroll {
         overflow: hidden;
