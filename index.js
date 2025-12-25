@@ -3,7 +3,7 @@ const projects = [{
         title: "Luxury Living Room",
         description: "Modern elegance with sophisticated color palette",
         status: "completed",
-        icon: "🏠",
+        image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1600&q=80",
         fullDescription: "A complete transformation that turned this ordinary living space into a stunning showcase of modern design. The client wanted sophistication and warmth, achieved through careful color selection and expert application.",
         details: [
             { label: "Duration", value: "5 days" },
@@ -22,7 +22,7 @@ const projects = [{
         title: "Estate Exterior",
         description: "Premium weather-resistant full exterior transformation",
         status: "completed",
-        icon: "🏡",
+        image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
         fullDescription: "This comprehensive exterior project protected and elevated the home's curb appeal. Using premium paints designed for Zambia's climate, we ensured both beauty and durability.",
         details: [
             { label: "Duration", value: "2 weeks" },
@@ -41,7 +41,7 @@ const projects = [{
         title: "Corporate Headquarters",
         description: "Professional workspace with brand-aligned colors",
         status: "completed",
-        icon: "🏢",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
         fullDescription: "Weekend transformation of a busy office to minimize business disruption. Created a professional environment that reflects the company's brand while maintaining productivity.",
         details: [
             { label: "Duration", value: "3 days" },
@@ -61,7 +61,9 @@ projects.forEach((project, index) => {
     card.className = "project-card";
     card.onclick = () => openModal(index);
     card.innerHTML = `
-            <div class="project-image">${project.icon}</div>
+            <div class="project-image" style="background-image: url('${
+              project.image
+            }');"></div>
             <div class="project-info">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
@@ -86,7 +88,8 @@ function openModal(index) {
     const modalImage = document.getElementById("modalImage");
     const modalDetails = document.getElementById("modalDetails");
 
-    modalImage.innerHTML = project.icon;
+    modalImage.style.backgroundImage = `url('${project.image}')`;
+    modalImage.innerHTML = "";
 
     let detailsHTML = `
             <h2>${project.title}</h2>
