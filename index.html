@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">🎨 PaintPro</div>
+            <ul>
+                <li><a href="#home" onclick="smoothScroll(event, 'home')">Home</a></li>
+                <li><a href="#about" onclick="smoothScroll(event, 'about')">About</a></li>
+                <li><a href="#projects" onclick="smoothScroll(event, 'projects')">Projects</a></li>
+                <li><a href="#contact" onclick="smoothScroll(event, 'contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Professional House Painting</div>
+            <h1>Transform Your Space<br/>With <span>Expert Precision</span></h1>
+            <p class="hero-description">Bringing life, color, and beauty to homes across Lusaka with meticulous craftsmanship and years of trusted experience.</p>
+            <div class="cta-buttons">
+                <button class="cta-button cta-primary" onclick="smoothScroll(event, 'projects')">View Portfolio</button>
+                <button class="cta-button cta-secondary" onclick="smoothScroll(event, 'contact')">Get in Touch</button>
+            </div>
+        </div>
+        <!-- Carousel navigation dots -->
+        <div class="hero-carousel-nav"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="profile-section">
+                <div class="profile-image">
+                    🎨
+                </div>
+                <div class="floating-badge">
+                    <h4>3+</h4>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2>About <span>My Craft</span></h2>
+                <p>I'm a passionate painting professional with over a decade of experience transforming residential and commercial spaces. Every project is an opportunity to blend technical expertise with artistic vision, creating environments that inspire
+                    and delight.</p>
+                <p>From precise trim work to bold accent walls, I approach each job with the same commitment to excellence. My goal isn't just to paint your walls—it's to elevate your entire space.</p>
+
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>🏠 Interior Painting</h4>
+                        <p>Expert in all interior finishes and techniques</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>🏡 Exterior Painting</h4>
+                        <p>Weather-resistant solutions that last</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>🎨 Color Consultation</h4>
+                        <p>Professional guidance for perfect palettes</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>✨ Specialty Finishes</h4>
+                        <p>Textures, murals, and custom work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header">
+            <h2>Featured <span>Projects</span></h2>
+            <p>A showcase of precision, creativity, and transformation</p>
+        </div>
+        <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Let's Create Something <span>Beautiful</span></h2>
+        <p>Ready to transform your space? Reach out today for a free consultation!</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/260779661765?text=Hi,%20I'm%20interested%20in%20your%20painting%20services" class="contact-btn whatsapp-btn" target="_blank">
+                <span style="font-size: 1.8rem;">💬</span> WhatsApp Me
+            </a>
+            <a href="tel:+260779661765" class="contact-btn call-btn">
+                <span style="font-size: 1.8rem;">📞</span> Call Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home" onclick="smoothScroll(event, 'home')">Home</a>
+                <a href="#about" onclick="smoothScroll(event, 'about')">About</a>
+                <a href="#projects" onclick="smoothScroll(event, 'projects')">Projects</a>
+                <a href="#contact" onclick="smoothScroll(event, 'contact')">Contact</a>
+            </div>
+            <p>© 2024 Professional House Painting. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">Lusaka, Zambia</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-image" id="modalImage"></div>
+            <div class="modal-details" id="modalDetails"></div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
