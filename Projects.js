@@ -1,6 +1,7 @@
 // Projects properties
 const projects = [{
         title: "Luxury Living Room",
+        category: "interior",
         description: "Modern elegance with sophisticated color palette",
         status: "completed",
         image: "./Images/20251225_1415_image.png",
@@ -25,6 +26,7 @@ const projects = [{
     },
     {
         title: "Estate Exterior",
+        category: "exterior",
         description: "Premium weather-resistant full exterior transformation",
         status: "completed",
         image: "./Images/Exterial image.jpg",
@@ -49,6 +51,7 @@ const projects = [{
     },
     {
         title: "Corporate Headquarters",
+        category: "interior",
         description: "Professional workspace with brand-aligned colors",
         status: "completed",
         image: "./Images/Coorporate_image.jpg",

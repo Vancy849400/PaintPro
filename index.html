@@ -12,7 +12,7 @@
     <!-- Navigation -->
     <nav id="navbar" class="scrolled">
         <div class="nav-container">
-            <div class="logo">🎨 Vancy Painter</div>
+            <div class="logo">🎨 <span>Vancy</span> Painter</div>
             <!-- Hamburger menu button -->
             <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" type="button">
                 <span class="bar"></span>
@@ -20,8 +20,8 @@
                 <span class="bar"></span>
             </button>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html" onclick="smoothScroll(event, 'home')">Home</a></li>
+                <li><a href="#about" onclick="smoothScroll(event, 'about')">About</a></li>
                 <li><a href="Projects.html">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -107,7 +107,7 @@
             <div class="footer-links">
                 <a href="#home" onclick="smoothScroll(event, 'home')">Home</a>
                 <a href="#about" onclick="smoothScroll(event, 'about')">About</a>
-                <a href="#projects" onclick="smoothScroll(event, 'projects')">Portfolio</a>
+                <a href="Projects.html">Portfolio</a>
                 <a href="#contact" onclick="smoothScroll(event, 'contact')">Contact</a>
             </div>
             <p id="now"></p>

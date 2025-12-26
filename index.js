@@ -1,48 +1,27 @@
 // Projects properties
 import projects from "./Projects.js";
 
-// Populate project grid
-const projectGrid = document.getElementById("projectGrid");
+// Function to display projects
+window.displayProjects = function(filter = "all") {
+    const projectGrid = document.getElementById("projectGrid");
+    if (!projectGrid) return;
 
-if (projectGrid) {
+    projectGrid.innerHTML = ""; // Clear the grid
+
     projects.forEach((project, index) => {
+        // Filter logic
+        if (filter !== "all" && project.category !== filter) return;
+
         const card = document.createElement("div");
         card.className = "project-card";
         card.onclick = () => openModal(index);
         card.innerHTML = `
-                    <div class="project-image" style="background-image: url('${
-                      project.image
-                    }');"></div>
-                    <div class="project-info">
-                        <h3>${project.title}</h3>
-                        <p>${project.description}</p>
-                        <div class="project-footer">
-                            <span class="status-badge ${project.status}">
-                                ${
-                                  project.status === "completed"
-                                    ? "✓ Completed"
-                                    : "⏳ In Progress"
-                                }
-                            </span>
-                        </div>
-                    </div>
-                `;
-        projectGrid.appendChild(card);
-    });
-}
-
-// Modal functions
-function openModal(index) {
-    const project = projects[index];
-    const modal = document.getElementById("projectModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalDetails = document.getElementById("modalDetails");
-
-    modalImage.style.backgroundImage = `url('${project.image}')`;
-    modalImage.innerHTML = "";
-
-    let detailsHTML = `
-                <h2>${project.title}</h2>
+            <div class="project-image" style="background-image: url('${
+              project.image
+            }');"></div>
+            <div class="project-info">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
                 <span class="status-badge ${project.status}">
                     ${
                       project.status === "completed"
@@ -50,53 +29,113 @@ function openModal(index) {
                         : "⏳ In Progress"
                     }
                 </span>
-                <p style="margin-top: 1.5rem;">${project.fullDescription}</p>
-                <div class="details-grid">
-            `;
+            </div>
+        `;
+        projectGrid.appendChild(card);
+    });
+};
+
+// Filter function for the buttons
+window.filterProjects = function(category) {
+    // 1. Update active button style
+    const buttons = document.querySelectorAll(".filter-btn");
+    buttons.forEach((btn) => {
+        btn.classList.remove("active");
+        if (btn.innerText.toLowerCase() === category) btn.classList.add("active");
+        if (category === "all" && btn.innerText === "All")
+            btn.classList.add("active");
+    });
+
+    // 2. Re-display projects
+    displayProjects(category);
+};
+
+// Initialize the display
+displayProjects("all");
+
+//Model functions
+window.openModal = function(index) {
+    const project = projects[index];
+    const modal = document.getElementById("projectModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalDetails = document.getElementById("modalDetails");
+
+    if (!modal) return;
+
+    modalImage.style.backgroundImage = `url('${project.image}')`;
+
+    let detailsHTML = `
+        <h2>${project.title}</h2>
+        <span class="status-badge ${project.status}">
+            ${project.status === "completed" ? "✓ Completed" : "⏳ In Progress"}
+        </span>
+        <p style="margin-top: 1.5rem;">${project.fullDescription}</p>
+        <div class="details-grid">
+    `;
 
     project.details.forEach((detail) => {
         detailsHTML += `
-                    <div class="detail-item">
-                        <div class="detail-label">${detail.label}</div>
-                        <div class="detail-value">${detail.value}</div>
-                    </div>
-                `;
+            <div class="detail-item">
+                <div class="detail-label">${detail.label}</div>
+                <div class="detail-value">${detail.value}</div>
+            </div>
+        `;
     });
 
     detailsHTML += `</div>`;
-
     modalDetails.innerHTML = detailsHTML;
+
     modal.style.display = "block";
-    document.body.style.overflow = "hidden";
-}
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+};
 
-function closeModal() {
+window.closeModal = function() {
     const modal = document.getElementById("projectModal");
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById("projectModal");
-    if (event.target == modal) {
-        closeModal();
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scroll
     }
 };
 
+// Close modal when clicking outside the content area
+window.addEventListener("click", (event) => {
+    const modal = document.getElementById("projectModal");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+// Close modal with Escape key for better UX
+window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
+
 // Smooth scroll function
-function smoothScroll(e, target) {
-    e.preventDefault();
-    const element = document.getElementById(target);
+window.smoothScroll = function(e, targetId) {
+    const element = document.getElementById(targetId);
+
+    // If we are on a different page (e.g., Projects.html) and trying to reach an ID on Home
+    if (!element && (targetId === "about" || targetId === "home")) {
+        window.location.href = `index.html#${targetId}`;
+        return;
+    }
+
     if (element) {
+        e.preventDefault();
         const navHeight = 80;
         const targetPosition = element.offsetTop - navHeight;
+
         window.scrollTo({
             top: targetPosition,
             behavior: "smooth",
         });
+
+        // Accessibility: update URL hash without jump
+        history.pushState(null, null, `#${targetId}`);
     }
-}
+};
 
 // Hamburger menu toggle logic
 const nav = document.getElementById("navbar");

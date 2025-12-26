@@ -12,7 +12,7 @@
     <!-- Navigation -->
     <nav id="navbar" class="scrolled">
         <div class="nav-container">
-            <div class="logo">🎨 Vancy Painter</div>
+            <div class="logo">🎨 <span>Vancy</span> Painter</div>
             <!-- Hamburger menu button -->
             <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" type="button">
                 <span class="bar"></span>
@@ -33,6 +33,11 @@
         <div class="section-header">
             <h2>Featured <span>Projects</span></h2>
             <p>A showcase of precision, creativity, and transformation</p>
+        </div>
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('interior')">Interior</button>
+            <button class="filter-btn" onclick="filterProjects('exterior')">Exterior</button>
         </div>
         <div class="project-grid" id="projectGrid"></div>
     </section>
@@ -55,8 +60,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
+                <a href="index.html" onclick="smoothScroll(event, 'home')">Home</a>
+                <li><a href="#about" onclick="smoothScroll(event, 'about')">About</a></li>
                 <a href="Projects.html">Portfolio</a>
                 <a href="#contact">Contact</a>
             </div>

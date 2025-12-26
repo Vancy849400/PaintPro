@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #0a0e27;
@@ -378,21 +383,113 @@ nav a:hover::after {
     color: #9ca3af;
 }
 
-.project-grid {
-    max-width: 1400px;
-    margin: 0 auto;
+
+/* Filter Container Base */
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 2rem auto 3rem;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    /* Allows buttons to drop to next line on small screens */
+}
+
+
+/* Responsive Button Styling */
+
+.filter-btn {
+    padding: 0.7rem 1.5rem;
+    background: rgba(17, 24, 39, 0.8);
+    color: #e5e7eb;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    /* Prevents text inside button from breaking */
+    flex: 0 1 auto;
+    /* Allows buttons to shrink but stay proportional */
+}
+
+
+/* Hover & Active States */
+
+.filter-btn:hover {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+
+/* Mobile Specific Adjustments (Phones) */
+
+@media (max-width: 480px) {
+    .filter-container {
+        gap: 8px;
+        justify-content: space-evenly;
+    }
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+        flex: 1 1 30%;
+        /* Forces 3 buttons to stay in a nice row or grid */
+        text-align: center;
+    }
+}
+
+
+/* The small Interior/Exterior label on the card */
+
+.category-tag {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+
+/* Ensure the grid has a smooth transition when items change */
+
+#projectGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    transition: all 0.3s ease;
+}
+
+
+/* Add a simple entrance animation */
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .project-card {
-    background: linear-gradient(135deg, #111827, #1f2937);
-    border-radius: 25px;
-    overflow: hidden;
-    transition: all 0.4s;
-    cursor: pointer;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    animation: cardEntrance 0.4s ease-out forwards;
 }
 
 .project-card:hover {
@@ -463,47 +560,60 @@ nav a:hover::after {
 }
 
 
-/* Modal */
+/* Enhanced Modal Overlay */
 
 .modal {
     display: none;
     position: fixed;
-    z-index: 2000;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(5, 8, 20, 0.9);
+    /* Darker, deeper navy */
+    backdrop-filter: blur(12px);
+    /* Premium blur effect */
     overflow-y: auto;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
 }
+
+
+/* Modal Content Container */
 
 .modal-content {
     position: relative;
-    margin: 3% auto;
-    max-width: 1000px;
-    background: linear-gradient(135deg, #111827, #1f2937);
-    border-radius: 30px;
+    background: #111827;
+    margin: 2rem auto;
+    max-width: 1100px;
+    width: 95%;
+    border-radius: 24px;
     overflow: hidden;
-    border: 2px solid rgba(16, 185, 129, 0.3);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
+
+
+/* Close Button Positioned Floating */
 
 .close {
     position: absolute;
     top: 20px;
-    right: 30px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: rgba(16, 185, 129, 0.1);
     color: #10b981;
-    font-size: 45px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1;
-    width: 50px;
-    height: 50px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(10, 14, 39, 0.8);
-    border-radius: 50%;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
     transition: all 0.3s;
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .close:hover {
@@ -512,59 +622,117 @@ nav a:hover::after {
     transform: rotate(90deg);
 }
 
+
+/* Modal Layout - Image Top / Content Bottom (Mobile) 
+   Desktop: Side by Side via JavaScript/Flex */
+
 .modal-image {
     width: 100%;
     height: 450px;
-    background: linear-gradient(135deg, #10b981, #059669);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-size: cover;
     background-position: center;
+    position: relative;
 }
+
+
+/* Gradient overlay on image to make it look deeper */
+
+.modal-image::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, #111827, transparent);
+}
+
+
+/* Details Section */
 
 .modal-details {
     padding: 3rem;
+    color: #f3f4f6;
 }
 
 .modal-details h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff, #9ca3af);
+    -webkit-text-fill-color: transparent;
 }
 
 .modal-details p {
-    font-size: 1.15rem;
+    color: #9ca3af;
     line-height: 1.8;
+    font-size: 1.1rem;
     margin-bottom: 2rem;
-    color: #d1d5db;
 }
+
+
+/* Redesigned Info Grid */
 
 .details-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 2rem;
 }
 
 .detail-item {
-    background: rgba(16, 185, 129, 0.1);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border-left: 4px solid #10b981;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    transition: transform 0.3s;
+}
+
+.detail-item:hover {
+    transform: translateY(-5px);
+    background: rgba(16, 185, 129, 0.05);
 }
 
 .detail-label {
-    font-weight: 700;
-    color: #10b981;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #10b981;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 
 .detail-value {
+    font-size: 1rem;
+    font-weight: 500;
     color: #e5e7eb;
-    font-size: 1.1rem;
+}
+
+
+/* Modal Open Animation */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .modal-details {
+        padding: 1.5rem;
+    }
+    .modal-image {
+        height: 300px;
+    }
+    .modal-details h2 {
+        font-size: 1.7rem;
+    }
 }
 
 
@@ -595,46 +763,108 @@ nav a:hover::after {
     color: #9ca3af;
 }
 
+
+/* Container for buttons */
+
 .contact-buttons {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 2.5rem;
 }
+
+
+/* Base Button Style */
 
 .contact-btn {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.5rem 3rem;
-    border-radius: 15px;
+    justify-content: center;
+    gap: 12px;
+    padding: 1.2rem 2.5rem;
+    border-radius: 16px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    transition: all 0.3s;
-    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    min-width: 220px;
 }
 
+
+/* WhatsApp Button: Premium Green Gradient */
+
 .whatsapp-btn {
-    background: linear-gradient(135deg, #25d366, #128c7e);
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
     color: white;
-    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+    border: none;
 }
 
 .whatsapp-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
 }
 
+
+/* Call Button: Sleek Glassmorphism / Ghost Style */
+
 .call-btn {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
     color: #10b981;
-    border-color: #10b981;
+    border: 2px solid rgba(16, 185, 129, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 .call-btn:hover {
-    background: rgba(16, 185, 129, 0.1);
-    transform: translateY(-5px);
+    background: #10b981;
+    color: white;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+}
+
+
+/* Icon Styling */
+
+.contact-btn i,
+.contact-btn span {
+    transition: transform 0.3s ease;
+}
+
+.contact-btn:hover i,
+.contact-btn:hover span {
+    transform: rotate(-10deg) scale(1.2);
+}
+
+
+/* Subtle Pulse Animation for WhatsApp */
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+.whatsapp-btn {
+    animation: pulse-green 2s infinite;
+}
+
+
+/* Mobile full-width buttons */
+
+@media (max-width: 480px) {
+    .contact-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+    }
 }
 
 
