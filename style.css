@@ -53,6 +53,12 @@ nav.scrolled {
     background-clip: text;
 }
 
+@media(max-width: 480px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+}
+
 nav ul {
     list-style: none;
     display: flex;
