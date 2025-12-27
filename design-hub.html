@@ -603,26 +603,90 @@
         .ba-after-label {
             right: 30px;
         }
+        /* Small devices (phones) */
         
         @media (max-width: 768px) {
             .nav-container {
-                padding: 1rem 1.5rem;
+                flex-direction: column;
+                padding: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+                text-align: center;
             }
             .hero h1 {
                 font-size: 2rem;
             }
             .hero p {
-                padding: 1.2rem;
+                font-size: 1rem;
+                padding: 0 1rem;
             }
-            .color-display,
-            .calculator-grid {
+            .hub-grid,
+            .calculator-grid,
+            .room-controls {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .hub-card {
+                padding: 1.5rem;
+            }
+            .tool-header h2 {
+                font-size: 1.6rem;
+            }
+            .color-display {
                 grid-template-columns: 1fr;
             }
-            .hub-grid {
-                grid-template-columns: 1fr;
+            .color-preview {
+                height: 250px;
+                font-size: 1rem;
+            }
+            .room-canvas {
+                height: 300px;
             }
             .ba-slider-container {
                 height: 300px;
+            }
+            .ba-handle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+        /* Extra small devices (under 480px) */
+        
+        @media (max-width: 480px) {
+            .hub-container {
+                padding: 1.4rem;
+            }
+            .hub-grid,
+            .calculator-grid,
+            .room-controls {
+                margin: 1.2rem 0;
+                padding: 0;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .hub-card {
+                padding: 1.1rem;
+            }
+            .tool-header h2 {
+                font-size: 1.2rem;
+            }
+            .calc-input-group,
+            .calc-results {
+                padding: 1rem;
+            }
+            .calc-button {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            .result-item span:last-child {
+                font-size: 1rem;
             }
         }
     </style>
@@ -638,7 +702,7 @@
 
     <section class="hero">
         <div>
-            <h1>Interactive <br> <span>Design Hub</span></h1>
+            <h1>Interactive <span>Design Hub</span></h1>
             <p>Explore colors, visualize transformations, and plan your perfect paint project</p>
         </div>
     </section>
@@ -673,7 +737,7 @@
         <div id="colorPicker" class="tool-section">
             <div class="tool-header">
                 <h2>🎨 Color Explorer</h2>
-                <button class="close-btn">Close ✕</button>
+                <button class="close-btn">✕</button>
             </div>
 
             <div class="color-display">
@@ -717,7 +781,7 @@
         <div id="roomVisualizer" class="tool-section">
             <div class="tool-header">
                 <h2>🏠 Room Visualizer</h2>
-                <button class="close-btn">Close ✕</button>
+                <button class="close-btn">✕</button>
             </div>
 
             <div class="room-canvas">
@@ -736,58 +800,70 @@
 
         <div id="paintCalculator" class="tool-section">
             <div class="tool-header">
-                <h2>📐 Paint Calculator</h2>
-                <button class="close-btn">Close ✕</button>
-            </div>
-
+                <h2>📐 Paint Calculator</h2> <button class="close-btn">✕</button> </div>
             <div class="calculator-grid">
+                <!-- Input Section -->
                 <div class="calc-input-group">
                     <h3>Room Dimensions</h3>
                     <div class="input-row">
-                        <label>Length (meters)</label>
+                        <label>Room Length (meters)</label>
                         <input type="number" id="roomLength" placeholder="5" min="0" step="0.1">
                     </div>
                     <div class="input-row">
-                        <label>Width (meters)</label>
+                        <label>Room Width (meters)</label>
                         <input type="number" id="roomWidth" placeholder="4" min="0" step="0.1">
                     </div>
                     <div class="input-row">
-                        <label>Height (meters)</label>
+                        <label>Room Height (meters)</label>
                         <input type="number" id="roomHeight" placeholder="3" min="0" step="0.1">
+                    </div>
+                    <h3>Windows</h3>
+                    <div class="input-row">
+                        <label>Window Height (meters)</label>
+                        <input type="number" id="windowHeight" placeholder="1.2" min="0" step="0.1">
+                    </div>
+                    <div class="input-row">
+                        <label>Window Width (meters)</label>
+                        <input type="number" id="windowWidth" placeholder="1.5" min="0" step="0.1">
+                    </div>
+                    <div class="input-row">
+                        <label>Number of Windows</label>
+                        <input type="number" id="numWindows" placeholder="1" min="0" step="1">
+                    </div>
+                    <h3>Doors</h3>
+                    <div class="input-row">
+                        <label>Door Height (meters)</label>
+                        <input type="number" id="doorHeight" placeholder="2.0" min="0" step="0.1">
+                    </div>
+                    <div class="input-row">
+                        <label>Door Width (meters)</label>
+                        <input type="number" id="doorWidth" placeholder="0.9" min="0" step="0.1">
+                    </div>
+                    <div class="input-row">
+                        <label>Number of Doors</label>
+                        <input type="number" id="numDoors" placeholder="1" min="0" step="1">
                     </div>
                     <div class="input-row">
                         <label>Number of Coats</label>
                         <input type="number" id="coats" value="2" min="1" max="5">
                     </div>
-                    <button class="calc-button" id="calculateBtn">Calculate</button>
-                </div>
-
+                    <button class="calc-button" id="calculateBtn">Calculate</button> </div>
+                <!-- Results Section -->
                 <div class="calc-results">
                     <h3>Results</h3>
-                    <div class="result-item">
-                        <span>Total Wall Area</span>
-                        <span id="wallArea">0 m²</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Paint Needed</span>
-                        <span id="paintNeeded">0 liters</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Estimated Cost</span>
-                        <span id="estimatedCost">ZMW 0</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Project Duration</span>
-                        <span id="duration">0 days</span>
-                    </div>
+                    <div class="result-item"> <span>Total Usable Wall Area</span> <span id="wallArea">0 m²</span> </div>
+                    <div class="result-item"> <span>Paint Needed</span> <span id="paintNeeded">0 liters</span> </div>
+                    <div class="result-item"> <span>Estimated Cost</span> <span id="estimatedCost">ZMW 0</span> </div>
+                    <div class="result-item"> <span>Project Duration</span> <span id="duration">0 days</span> </div>
                 </div>
             </div>
         </div>
 
+
         <div id="beforeAfter" class="tool-section">
             <div class="tool-header">
                 <h2>↔️ Before & After Comparison</h2>
-                <button class="close-btn">Close ✕</button>
+                <button class="close-btn">✕</button>
             </div>
 
             <div class="ba-slider-container" id="baContainer">
@@ -982,28 +1058,59 @@
 
         // Paint Calculator
         document.getElementById('calculateBtn').addEventListener('click', function() {
+            // Room dimensions
             const length = parseFloat(document.getElementById('roomLength').value) || 0;
             const width = parseFloat(document.getElementById('roomWidth').value) || 0;
             const height = parseFloat(document.getElementById('roomHeight').value) || 0;
             const coats = parseInt(document.getElementById('coats').value) || 2;
+
+            // Window inputs
+            const windowHeight = parseFloat(document.getElementById('windowHeight').value) || 0;
+            const windowWidth = parseFloat(document.getElementById('windowWidth').value) || 0;
+            const numWindows = parseInt(document.getElementById('numWindows').value) || 0;
+
+            // Door inputs
+            const doorHeight = parseFloat(document.getElementById('doorHeight').value) || 0;
+            const doorWidth = parseFloat(document.getElementById('doorWidth').value) || 0;
+            const numDoors = parseInt(document.getElementById('numDoors').value) || 0;
 
             if (length === 0 || width === 0 || height === 0) {
                 alert('Please enter all room dimensions');
                 return;
             }
 
+            // 1. Total wall area (4 walls)
             const wallArea = 2 * (length + width) * height;
-            const coverage = 10;
-            const litersNeeded = (wallArea / coverage) * coats;
-            const pricePerLiter = 150;
-            const cost = litersNeeded * pricePerLiter;
-            const days = Math.ceil(wallArea / 50);
 
-            document.getElementById('wallArea').textContent = wallArea.toFixed(1) + ' m²';
+            // 2. Openings area (windows + doors)
+            const windowArea = windowHeight * windowWidth * numWindows;
+            const doorArea = doorHeight * doorWidth * numDoors;
+            const openingsArea = windowArea + doorArea;
+
+            // 3. Usable wall area
+            const usableArea = wallArea - openingsArea;
+
+            // 4. Effective area (with coats)
+            const effectiveArea = usableArea * coats;
+
+            // 5. Paint needed (10 m² per liter coverage)
+            const coverage = 10;
+            const litersNeeded = effectiveArea / coverage;
+
+            // 6. Cost (150 ZMW per liter)
+            const pricePerLiter = 130;
+            const cost = litersNeeded * pricePerLiter;
+
+            // 7. Duration (50 m² per day)
+            const days = Math.ceil(usableArea / 50);
+
+            // Update results
+            document.getElementById('wallArea').textContent = usableArea.toFixed(1) + ' m²';
             document.getElementById('paintNeeded').textContent = litersNeeded.toFixed(1) + ' liters';
             document.getElementById('estimatedCost').textContent = 'ZMW ' + cost.toFixed(0);
             document.getElementById('duration').textContent = days + ' day' + (days > 1 ? 's' : '');
         });
+
 
         // Before/After Slider
         function initBeforeAfter() {
