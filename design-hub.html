@@ -614,12 +614,20 @@
                 margin: 0.5rem 0;
                 text-align: center;
             }
+            .hero {
+                padding: 80px 1rem 40px;
+                /* less top padding */
+                min-height: auto;
+                /* remove fixed height */
+            }
             .hero h1 {
                 font-size: 2rem;
+                line-height: 1.3;
             }
             .hero p {
                 font-size: 1rem;
-                padding: 0 1rem;
+                max-width: 90%;
+                /* prevent text stretching too wide */
             }
             .hub-grid,
             .calculator-grid,
@@ -659,17 +667,21 @@
                 font-size: 1.4rem;
             }
             .hero {
-                padding: 1rem 2rem;
+                padding: 10rem 1rem 60px;
             }
             .hero h1 {
-                font-size: 1.8rem;
-                padding: 0 4rem;
+                font-size: 1.6rem;
+                line-height: 1.2;
+                margin-bottom: 0.8rem;
             }
             .hero h1 span {
-                font-size: 2rem;
+                font-size: inherit;
+                /* keep gradient text same size */
             }
             .hero p {
-                font-size: 1.3rem;
+                font-size: 0.9rem;
+                line-height: 1.4;
+                padding: 0 0.5rem;
             }
             .hub-container {
                 padding-top: 0;
