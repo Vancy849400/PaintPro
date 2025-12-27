@@ -292,7 +292,6 @@
             border-radius: 10px;
             background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.4) 100%);
             outline: none;
-            -webkit-appearance: none;
         }
         
         input[type="range"]::-webkit-slider-thumb {
@@ -607,11 +606,11 @@
         
         @media (max-width: 768px) {
             .nav-container {
-                flex-direction: column;
-                padding: 1rem;
+                flex-direction: row;
+                padding: 1rem 2rem;
             }
             nav a {
-                display: block;
+                display: inline;
                 margin: 0.5rem 0;
                 text-align: center;
             }
@@ -656,14 +655,8 @@
         /* Extra small devices (under 480px) */
         
         @media (max-width: 480px) {
-            .hub-container {
-                padding: 1.4rem;
-            }
-            .hub-grid,
-            .calculator-grid,
-            .room-controls {
-                margin: 1.2rem 0;
-                padding: 0;
+            .logo {
+                font-size: 1.5rem;
             }
             .hero h1 {
                 font-size: 1.6rem;
@@ -674,12 +667,15 @@
             .hub-card {
                 padding: 1.1rem;
             }
+            .tool-section {
+                padding: 1.2rem;
+            }
             .tool-header h2 {
                 font-size: 1.2rem;
             }
             .calc-input-group,
             .calc-results {
-                padding: 1rem;
+                padding: 0.6rem;
             }
             .calc-button {
                 font-size: 1rem;
