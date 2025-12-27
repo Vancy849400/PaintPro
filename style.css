@@ -53,7 +53,11 @@ nav.scrolled {
     background-clip: text;
 }
 
-@media(max-width: 480px) {
+.logo span {
+    color: #d1d5db;
+}
+
+@media (max-width: 480px) {
     .logo {
         font-size: 1.4rem;
     }
@@ -496,6 +500,7 @@ nav a:hover::after {
 
 .project-card {
     animation: cardEntrance 0.4s ease-out forwards;
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -609,8 +614,8 @@ nav a:hover::after {
     right: 20px;
     width: 45px;
     height: 45px;
-    background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
+    background: #000;
+    color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -623,7 +628,7 @@ nav a:hover::after {
 }
 
 .close:hover {
-    background: #10b981;
+    background: #059669;
     color: white;
     transform: rotate(90deg);
 }
