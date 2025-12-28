@@ -708,13 +708,6 @@
                 <h3>Paint Calculator</h3>
                 <p>Calculate exactly how much paint you need for your project</p>
             </div>
-
-            <div class="hub-card" data-tool="beforeAfter">
-                <div class="hub-icon">↔️</div>
-                <h3>Before & After</h3>
-                <p>Interactive slider to compare transformations</p>
-            </div>
-
             <div class="hub-card" data-tool="paletteGenerator">
                 <div class="hub-icon">🎨</div>
                 <h3>Palette Generator</h3>
@@ -770,24 +763,6 @@
                         <span id="duration">0 days</span>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Before & After -->
-        <div id="beforeAfter" class="tool-section">
-            <div class="tool-header">
-                <h2>↔️ Before & After Comparison</h2>
-                <button class="close-btn">✕</button>
-            </div>
-
-            <div class="ba-slider-container" id="baContainer">
-                <div class="ba-image" id="baBefore"></div>
-                <div class="ba-image ba-after" id="baAfter"></div>
-                <div class="ba-slider">
-                    <div class="ba-handle">⇆</div>
-                </div>
-                <div class="ba-label ba-before-label">BEFORE</div>
-                <div class="ba-label ba-after-label">AFTER</div>
             </div>
         </div>
 
@@ -866,21 +841,6 @@
             document.getElementById("paintNeeded").textContent = `${paintNeeded} liters`;
             document.getElementById("estimatedCost").textContent = `ZMW ${estimatedCost}`;
             document.getElementById("duration").textContent = `${duration} days`;
-        });
-
-        // -------------------- BEFORE & AFTER SLIDER --------------------
-        const baContainer = document.getElementById("baContainer");
-        const baAfter = document.getElementById("baAfter");
-        const baSlider = baContainer.querySelector(".ba-slider");
-
-        baContainer.addEventListener("mousemove", e => {
-            const rect = baContainer.getBoundingClientRect();
-            let x = e.clientX - rect.left;
-            if (x < 0) x = 0;
-            if (x > rect.width) x = rect.width;
-            const percent = (x / rect.width) * 100;
-            baAfter.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-            baSlider.style.left = `${percent}%`;
         });
 
         // Palette Generator
