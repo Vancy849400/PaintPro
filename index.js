@@ -69,7 +69,7 @@ window.openModal = function(index) {
         <span class="status-badge ${project.status}">
             ${project.status === "completed" ? "✓ Completed" : "⏳ In Progress"}
         </span>
-        <p style="margin-top: 1.5rem;">${project.fullDescription}</p>
+        <p style="margin-top: 1.5rem;">${project.imageDescription}</p>
         <div class="details-grid">
     `;
 
