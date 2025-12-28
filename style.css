@@ -1006,4 +1006,10 @@ footer p {
     .contact h2 {
         font-size: 2rem;
     }
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
 }
